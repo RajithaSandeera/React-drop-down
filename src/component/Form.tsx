@@ -11,7 +11,7 @@ const Form = () => {
     department: '',
   });
 
-  const departments = ['HR', 'Finance', 'Marketing'];
+  const departments = ['ComputerScience', 'Management', 'ExportAgriculture','AnimalScience'];
 
   const [tableData, setTableData] = useState<{ FirstName: string; LastName: string; email: string; department:string }[]>([]);
 
@@ -21,7 +21,6 @@ const Form = () => {
     setFormData({ FirstName: '', LastName: '', email: '', department: '' });
   };
   
-
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -36,7 +35,7 @@ const Form = () => {
 
   return (
     <div className="container">
-        <h1>Employee Details</h1>
+      <h1>Employee Details</h1>
       <form onSubmit={submitForm}>
         <input
           name="FirstName"
@@ -64,10 +63,10 @@ const Form = () => {
         />
       
         <div className='search'>
-        <SearchComponent options={departments} value={formData.department} onChange={handleDepartmentChange } />
+          <SearchComponent options={departments} value={formData.department} onChange={handleDepartmentChange } />
+          {formData.department.length > 0 && <p>You selected {formData.department} department.</p>}
         </div>
         
-      
         <button type="submit" className="btn">
           Submit
         </button>
